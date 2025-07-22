@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+
+import CollegeHome from "./component/CollegeHome";
+import Home from "./component/Home"; // Student Management
+import FacultyHome from "./component/FacultyHome"; // Faculty Management
+import AddStudent from "./component/AddStudent";
+import ViewStudent from "./component/ViewStudent";
+import ViewFaculty from "./component/ViewFaculty"; // ✅ Import ViewFaculty
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mt-4">
+      <Routes>
+        <Route path="/" element={<CollegeHome />} />
+        <Route path="/students" element={<Home />} />
+        <Route path="/faculties" element={<FacultyHome />} />
+        <Route path="/add" element={<AddStudent />} />
+        <Route path="/view/:id" element={<ViewStudent />} />
+        <Route path="/faculty/view/:id" element={<ViewFaculty />} /> {/* ✅ Add this route */}
+      </Routes>
     </div>
   );
 }
